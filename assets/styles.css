@@ -225,12 +225,37 @@ a:focus-visible {
   55% { box-shadow: 0 0 0 14px rgba(179, 138, 46, 0), 0 5px 12px rgba(79, 54, 17, .28); }
 }
 
-.open-hint {
+.open-invitation-button {
   align-self: start;
-  margin: clamp(30px, 6vh, 52px) 0 0;
-  color: #5e6659;
-  font-size: .82rem;
-  font-style: italic;
+  min-height: 48px;
+  margin: clamp(28px, 5vh, 46px) 0 0;
+  padding: 11px 25px;
+  border: 1px solid rgba(73, 97, 71, .3);
+  border-radius: 999px;
+  color: #fff;
+  background: var(--green-deep);
+  box-shadow: 0 8px 20px rgba(73, 97, 71, .2);
+  font-family: var(--sans);
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+}
+
+.open-invitation-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 11px 24px rgba(73, 97, 71, .26);
+}
+
+.open-invitation-button:active {
+  transform: translateY(0) scale(.98);
+}
+
+.open-invitation-button:disabled {
+  opacity: .6;
+  cursor: default;
 }
 
 .invitation {
@@ -596,6 +621,48 @@ a:focus-visible {
   font-size: .62rem;
   letter-spacing: .08em;
   text-transform: uppercase;
+}
+
+.music-toggle {
+  position: fixed;
+  z-index: 90;
+  right: max(14px, env(safe-area-inset-right));
+  bottom: max(14px, env(safe-area-inset-bottom));
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, .55);
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(73, 97, 71, .94);
+  box-shadow: 0 8px 22px rgba(48, 45, 42, .25);
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: transform .2s ease, background-color .2s ease;
+}
+
+.music-toggle[hidden] {
+  display: none;
+}
+
+.music-toggle:hover {
+  transform: translateY(-2px);
+}
+
+.music-toggle:active {
+  transform: scale(.95);
+}
+
+.music-toggle[aria-pressed="false"] {
+  background: rgba(110, 105, 99, .92);
+}
+
+.music-toggle-icon {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1;
 }
 
 footer {

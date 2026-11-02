@@ -7,8 +7,12 @@
   const envelopeScreen = document.getElementById("envelope-screen");
   const invitation = document.getElementById("invitation");
   const seal = document.getElementById("seal");
+  const openButton = document.getElementById("open-invitation");
   const flap = document.getElementById("flap");
   const cardPreview = document.getElementById("card-preview");
+  const backgroundMusic = document.getElementById("background-music");
+  const musicToggle = document.getElementById("music-toggle");
+  const musicToggleIcon = document.getElementById("music-toggle-icon");
 
   let hasOpened = false;
   let countdownTimer;
@@ -17,11 +21,38 @@
     window.setTimeout(callback, reducedMotion.matches ? 0 : milliseconds);
   }
 
+  function updateMusicControl(isPlaying) {
+    musicToggle.setAttribute("aria-pressed", String(isPlaying));
+    musicToggle.setAttribute("aria-label", isPlaying ? "Pause background music" : "Play background music");
+    musicToggleIcon.textContent = isPlaying ? "Ⅱ" : "♪";
+  }
+
+  function playMusic() {
+    const playAttempt = backgroundMusic.play();
+
+    if (playAttempt) {
+      playAttempt
+        .then(() => updateMusicControl(true))
+        .catch(() => updateMusicControl(false));
+    }
+  }
+
+  function toggleMusic() {
+    if (backgroundMusic.paused) {
+      playMusic();
+    } else {
+      backgroundMusic.pause();
+    }
+  }
+
   function openInvitation() {
     if (hasOpened) return;
     hasOpened = true;
 
+    playMusic();
+
     seal.disabled = true;
+    openButton.disabled = true;
     seal.classList.add("is-hidden");
     flap.classList.add("is-open");
 
@@ -30,6 +61,7 @@
     delay(() => {
       envelopeScreen.classList.add("is-leaving");
       invitation.hidden = false;
+      musicToggle.hidden = false;
       document.body.style.overflow = "";
 
       window.requestAnimationFrame(() => {
@@ -75,5 +107,11 @@
   }
 
   document.body.style.overflow = "hidden";
+  backgroundMusic.volume = 0.35;
+  backgroundMusic.addEventListener("playing", () => updateMusicControl(true));
+  backgroundMusic.addEventListener("pause", () => updateMusicControl(false));
+  backgroundMusic.addEventListener("error", () => updateMusicControl(false));
   seal.addEventListener("click", openInvitation);
+  openButton.addEventListener("click", openInvitation);
+  musicToggle.addEventListener("click", toggleMusic);
 })();

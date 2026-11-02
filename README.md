@@ -1,6 +1,6 @@
 # David & Sukirtharani — Wedding Invitation
 
-A mobile-friendly, buildless static wedding invitation.
+A mobile-friendly, buildless static wedding invitation with looping background music.
 
 ## Preview locally
 
@@ -22,11 +22,14 @@ Upload this entire folder without changing its structure. The site requires no p
 
 `index.html` is the entry page. The Google Fonts request is optional; system fallbacks keep the invitation readable if it is blocked or unavailable.
 
+## Music behavior
+
+The supplied track starts after the guest selects the seal or **Open Invitation**, which complies with browser autoplay policies. It loops while the invitation is open, and a floating button lets the guest pause or resume it.
+
 ## Files
 
 - `index.html` — accessible invitation markup
 - `assets/styles.css` — responsive presentation and envelope animation
-- `assets/script.js` — interaction and India-time countdown
+- `assets/script.js` — interaction, music controls, and India-time countdown
 - `assets/david-sukirtharani.jpg` — optimized portrait asset
-
-The original `INVITE  CODE.txt` is retained unchanged as a reference.
+- `assets/anbil-avan-bgm.mp3` — looping invitation background music

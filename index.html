@@ -20,18 +20,20 @@
       <h1 id="envelope-title">You're invited</h1>
     </div>
 
-    <div class="envelope" aria-hidden="true">
-      <div class="preview-card" id="card-preview">
+    <div class="envelope">
+      <div class="preview-card" id="card-preview" aria-hidden="true">
         <span>D <i>&amp;</i> S</span>
       </div>
-      <div class="envelope-base"></div>
-      <div class="envelope-flap" id="flap"></div>
+      <div class="envelope-base" aria-hidden="true"></div>
+      <div class="envelope-flap" id="flap" aria-hidden="true"></div>
       <button class="seal" id="seal" type="button" aria-label="Open David and Sukirtharani's wedding invitation">
         D&amp;S
       </button>
     </div>
 
-    <p class="open-hint">Tap the seal to open</p>
+    <button class="open-invitation-button" id="open-invitation" type="button">
+      Open Invitation
+    </button>
   </div>
 
   <main class="invitation" id="invitation" tabindex="-1" hidden>
@@ -90,19 +92,19 @@
             <span>Nov</span>
           </time>
           <div>
-            <h3>Christian Wedding Cum Reception</h3>
-            <p>Saturday, 5:00 PM</p>
+            <h3>Christian Cum Reception</h3>
+            <p><time datetime="2026-11-21T17:00:00+05:30">Saturday, 5:00 PM&ndash;7:30 PM</time></p>
           </div>
         </article>
 
         <article class="event-card">
-          <time datetime="2026-11-22" class="event-date">
+          <time datetime="2026-11-22T09:00:00+05:30" class="event-date">
             <strong>22</strong>
             <span>Nov</span>
           </time>
           <div>
-            <h3>Marriage Ceremony</h3>
-            <p>Sunday</p>
+            <h3>Morning Wedding</h3>
+            <p><time datetime="2026-11-22T09:00:00+05:30">Sunday, between 9:00 AM&ndash;10:30 AM</time></p>
           </div>
         </article>
       </div>
@@ -149,6 +151,21 @@
       <small>21–22 November 2026 · Sivakasi</small>
     </footer>
   </main>
+
+  <audio id="background-music" loop preload="auto">
+    <source src="assets/anbil-avan-bgm.mp3" type="audio/mpeg">
+  </audio>
+
+  <button
+    class="music-toggle"
+    id="music-toggle"
+    type="button"
+    aria-label="Play background music"
+    aria-pressed="false"
+    hidden
+  >
+    <span class="music-toggle-icon" id="music-toggle-icon" aria-hidden="true">&#9834;</span>
+  </button>
 
   <noscript>
     <div class="noscript-message">Please enable JavaScript to open this interactive invitation.</div>
